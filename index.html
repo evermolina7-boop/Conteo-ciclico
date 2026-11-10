@@ -3,9 +3,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
 <style>
-:root{--bg:#f3f5f7;--sf:#fff;--tx:#1f2933;--mu:#667381;--ac:#33506e;--bt:#fff;--ln:#d6dce3;--ok:#2e7d4f;--bad:#b3402f;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14181d;--sf:#1d2329;--tx:#e8ecf0;--mu:#8f9aa6;--ac:#8fb0d3;--bt:#10151a;--ln:#2c343c;--ok:#5fb383;--bad:#e58a7b;color-scheme:dark}}
-:root[data-theme=dark]{--bg:#14181d;--sf:#1d2329;--tx:#e8ecf0;--mu:#8f9aa6;--ac:#8fb0d3;--bt:#10151a;--ln:#2c343c;--ok:#5fb383;--bad:#e58a7b;color-scheme:dark}
+:root{--bg:#f3f5f7;--sf:#fff;--tx:#1f2933;--mu:#667381;--ac:#33506e;--bt:#fff;--hd:#e9eef4;--ln:#d6dce3;--ok:#2e7d4f;--bad:#b3402f;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14181d;--sf:#1d2329;--tx:#e8ecf0;--mu:#8f9aa6;--ac:#8fb0d3;--bt:#10151a;--hd:#252e38;--ln:#2c343c;--ok:#5fb383;--bad:#e58a7b;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#14181d;--sf:#1d2329;--tx:#e8ecf0;--mu:#8f9aa6;--ac:#8fb0d3;--bt:#10151a;--hd:#252e38;--ln:#2c343c;--ok:#5fb383;--bad:#e58a7b;color-scheme:dark}
 html,body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,Arial,sans-serif}
 main{max-width:640px;margin:0 auto;padding:12px}h1{margin:8px 0 0;color:var(--ac);font-size:22px}.mu{color:var(--mu);font-size:13px}
 label{display:block;font-size:12px;color:var(--mu);margin:8px 0 0}
@@ -13,19 +13,19 @@ input,select{width:100%;box-sizing:border-box;padding:9px;border:1px solid var(-
 button,.btn{display:block;width:100%;box-sizing:border-box;margin:10px 0 0;padding:12px;border:0;border-radius:8px;background:var(--ac);color:var(--bt);font-size:15px;font-weight:600;text-align:center;cursor:pointer}
 .b2{background:var(--sf);color:var(--tx);border:1px solid var(--ln)}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:6px 0;z-index:5}.bar b{color:var(--ac)}
-.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;margin:10px 0;overflow:hidden}
-.card header{padding:8px 10px;border-bottom:1px solid var(--ln);font-size:14px}.card header span{float:right;font-weight:700}
-.row{padding:8px 10px;border-bottom:1px dashed var(--ln)}.row:last-child{border:0}.meta{font-size:12px;color:var(--mu)}
-.ins{display:grid;grid-template-columns:1fr;gap:2px}.ins label{font-size:14px;font-weight:600;color:var(--tx);margin:8px 0 0}.ins input{padding:14px 12px;font-size:20px;border-radius:10px}
-.sum{font-size:16px;margin-top:10px}.lot{font-size:18px;font-weight:700;margin-bottom:2px}.ip{display:flex;gap:6px}.ip input{flex:1;min-width:0}.pl{width:56px;flex:none;margin:0;padding:0;font-size:26px;line-height:1}[hidden]{display:none!important}.ex{margin-top:4px}.ok{color:var(--ok)}.bad{color:var(--bad)}.tag{border:1px solid var(--ac);color:var(--ac);border-radius:4px;padding:0 5px;font-size:11px;font-weight:700}.mini{width:auto;display:inline-block;margin:0;padding:7px 10px;font-size:13px}.panel{background:var(--sf);border:1px solid var(--ac);border-radius:10px;padding:8px 10px;margin:10px 0}.g2{display:grid;grid-template-columns:1fr 1fr;gap:6px}footer{text-align:center;color:var(--mu);font-size:12px;padding:16px 0}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.hd{padding:10px 12px;background:var(--hd);border-bottom:1px solid var(--ln);border-left:6px solid var(--ac)}.cd{font-size:22px;font-weight:800;letter-spacing:.5px;color:var(--ac);line-height:1.1}.ds{font-size:17px;font-weight:600;margin-top:3px;line-height:1.25}.pill{float:right;margin-left:8px;padding:3px 10px;border:1px solid var(--ln);border-radius:999px;background:var(--sf);font-size:13px;font-weight:700;color:var(--mu)}.pill.ok{color:var(--ok);border-color:var(--ok)}.pill.bad{color:var(--bad);border-color:var(--bad)}
+.row{padding:12px;border-bottom:2px solid var(--ln);border-left:5px solid transparent}.row.done{border-left-color:var(--ok)}.row:last-child{border:0}.meta{font-size:14px;color:var(--mu)}.meta b{color:var(--tx)}.erp{background:var(--hd);padding:2px 8px;border-radius:6px;font-size:15px}
+.ins{display:grid;grid-template-columns:1fr;gap:2px}.ins label{font-size:14px;font-weight:600;color:var(--tx);margin:8px 0 0}.ins input{padding:14px 12px;font-size:22px;font-weight:600;text-align:center;border-radius:10px}input:focus{outline:3px solid var(--ac);border-color:var(--ac)}
+.sum{display:flex;justify-content:space-between;gap:8px;margin-top:12px;padding:10px 12px;background:var(--hd);border-radius:8px;font-size:17px}.lot{font-size:20px;font-weight:700;margin-bottom:2px}.lot small{font-size:11px;font-weight:600;letter-spacing:.8px;color:var(--mu);margin-right:8px}.chips{display:flex;gap:6px;margin-top:6px}.chips button{margin:0;padding:9px 4px;font-size:13px;flex:1}.chips .on{background:var(--ac);color:var(--bt);border-color:var(--ac)}.bar{border-bottom:1px solid var(--ln)}.bar input{margin-top:6px;padding:12px;font-size:16px}.ip{display:flex;gap:6px}.ip input{flex:1;min-width:0}.pl{width:56px;flex:none;margin:0;padding:0;font-size:26px;line-height:1}[hidden]{display:none!important}.ex{margin-top:4px}.ok{color:var(--ok)}.bad{color:var(--bad)}.tag{border:1px solid var(--ac);color:var(--ac);border-radius:4px;padding:0 5px;font-size:11px;font-weight:700}.mini{width:auto;display:inline-block;margin:0;padding:7px 10px;font-size:13px}.panel{background:var(--sf);border:1px solid var(--ac);border-radius:10px;padding:8px 10px;margin:10px 0}.g2{display:grid;grid-template-columns:1fr 1fr;gap:6px}footer{text-align:center;color:var(--mu);font-size:12px;padding:16px 0}
 </style></head><body>
-<main id="s1"><h1>Conteo cíclico</h1><div class="mu">C. Imberton · Almacén Farmacia</div>
+<main id="s1"><h1>Conteo cíclico</h1><div class="mu">C. Imberton · Almacén Farmacia</div><div id="sv"></div>
 <label class="btn" style="color:var(--bt);font-size:15px">1. Cargar existencia (Excel)<input id="file" type="file" accept=".xlsx,.xls,.csv" hidden></label>
 <div id="cfg" hidden><label>Marca<select id="m"></select></label>
 <label>Nombre de la marca (opcional)<input id="n" placeholder="ej. ABBOTT FARMACEUTICA"></label>
 <label>Fecha del conteo<input id="dt" type="date"></label><button id="go">Iniciar conteo</button></div>
 <p id="msg" class="mu"></p></main>
-<main id="s2" hidden><div class="bar"><b id="ttl"></b> · <span id="st"></span><input id="q" type="search" placeholder="Buscar código o descripción"></div>
+<main id="s2" hidden><div class="bar"><b id="ttl"></b> · <span id="st"></span><button id="sg" class="b2 mini" style="float:right">Guardar</button><input id="q" type="search" placeholder="Buscar código o descripción"><div class="chips"><button class="b2 on" data-f="">Todos</button><button class="b2" data-f="p">Pendientes</button><button class="b2" data-f="d">Con diferencia</button></div></div>
 <button id="nw" class="b2">+ Agregar código que no está en la existencia</button>
 <div id="pn" class="panel" hidden><b id="pt"></b>
 <div class="g2"><label>Código<input id="ac" inputmode="numeric" autocomplete="off"></label><label>Org<input id="ao"></label></div>
@@ -37,15 +37,15 @@ button,.btn{display:block;width:100%;box-sizing:border-box;margin:10px 0 0;paddi
 <div id="list"></div>
 <button id="ex">Exportar Excel</button><button id="cp" class="b2">Exportar comprobante de conteo</button><button id="sh" class="b2">Compartir mi conteo (archivo)</button>
 <label class="btn b2" style="color:var(--tx);font-size:15px">Unir conteos de otros teléfonos<input id="mg" type="file" accept=".json" multiple hidden></label>
-<button id="bk" class="b2">Cambiar marca</button><p id="msg2" class="mu"></p></main>
+<button id="bk" class="b2">Guardar y salir</button><p id="msg2" class="mu"></p></main>
 <footer>Powered by Ever Molina</footer>
 <script>
 const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const F=[['p','Bodeguita (Pasillos)'],['a','Nave A'],['b','Nave B'],['c','Cuarentena'],['f','Facturas p.'],['h','Altas p.']];const X=['c','f','h'],fd=r=>([k,t])=>`<label>${t}<div class="ip"><input data-k="${k}" inputmode="numeric" autocomplete="off" value="${E(r.f[k]||'')}"><button type="button" class="b2 pl" data-pl="${k}" aria-label="sumar">+</button></div></label>`;
+const F=[['p','Bodeguita (Pasillos)'],['a','Nave A'],['b','Nave B'],['c','Cuarentena'],['f','Facturas p. (se resta)'],['h','Altas p.']];const X=['c','f','h'],fd=r=>([k,t])=>`<label>${t}<div class="ip"><input data-k="${k}" inputmode="numeric" autocomplete="off" value="${E(r.f[k]||'')}"><button type="button" class="b2 pl" data-pl="${k}" aria-label="sumar">+</button></div></label>`;
 const nz=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const nf=s=>String(s||'').replace(/,/g,'.').replace(/\s/g,'').split('+').filter(Boolean).join('+');
 const ev=s=>/^[\d.+]+$/.test(nf(s))?nf(s).split('+').reduce((a,x)=>a+(parseFloat(x)||0),0):0;
-const tot=r=>F.reduce((a,[k])=>a+ev(r.f[k]),0),has=r=>F.some(([k])=>nf(r.f[k]))||r.lf;
+const tot=r=>F.reduce((a,[k])=>a+(k==='f'?-1:1)*ev(r.f[k]),0),has=r=>F.some(([k])=>nf(r.f[k]))||r.lf;
 const iso=v=>{if(v===''||v==null)return'';if(typeof v==='number')return new Date(Date.UTC(1899,11,30)+Math.round(v)*864e5).toISOString().slice(0,10);const d=new Date(v);return isNaN(d)?'':d.toISOString().slice(0,10)};
 const fv=v=>v?v.split('-').reverse().join('/'):'';const key=r=>[r.c,r.s,r.l].join('|');
 let S=null,RAW=[],G=[],GI=[],tm;
@@ -62,17 +62,19 @@ $('#cfg').hidden=false;msg(RAW.length+' líneas cargadas.')}catch(x){msg('No pud
 $('#go').onclick=()=>{const m=$('#m').value,d=$('#dt').value;S={m,n:$('#n').value.trim().toUpperCase(),iso:d,fecha:d.split('-').reverse().join('.'),id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),g:[],rows:RAW.filter(r=>r.c.startsWith(m))};
 try{const j=JSON.parse(localStorage.getItem('cc:'+m+':'+d)||'[]'),a=Array.isArray(j)?j:j.r||[];S.g=j.g||[];S.id=j.id||S.id;(j.x||[]).filter(r=>!S.rows.some(x=>key(x)===key(r))).forEach(insRow);a.forEach(([k,f,lf])=>{const r=S.rows.find(x=>key(x)===k);if(r){r.f=f;r.lf=lf}})}catch(x){}
 $('#s1').hidden=true;$('#s2').hidden=false;$('#ttl').textContent=m+' '+S.n;render()};
-$('#bk').onclick=()=>{$('#s2').hidden=true;$('#s1').hidden=false};
+$('#bk').onclick=()=>{svNow();$('#s2').hidden=true;$('#s1').hidden=false;lsList()};
 function render(){G=[];GI=[];let L;S.rows.forEach((r,i)=>{if(!L||L.c!==r.c){L={c:r.c,d:r.d,ix:[]};G.push(L)}L.ix.push(i);GI[i]=G.length-1});
-$('#list').innerHTML=G.map((g,n)=>`<section class="card" data-q="${E(nz(g.c+' '+g.d))}"><header><b>${E(g.c)}</b> ${E(g.d)}<span id="gd${n}"></span></header>${g.ix.map(i=>{const r=S.rows[i];return`<div class="row" data-i="${i}"><div class="lot">Lote ${E(r.l)}${r.x?' <span class="tag">AGREGADO</span>':''}</div><div class="meta">Vence ${fv(r.v)||'—'} · ${E(r.s)} · ${r.x?`<u data-rm="${i}" style="cursor:pointer;color:var(--bad)">Quitar</u>`:`<b>ERP ${r.q}</b>`}</div><div class="ins">${F.filter(f=>!X.includes(f[0])).map(fd(r)).join('')}</div><div class="ins ex"${X.some(k=>nf(r.f[k]))?'':' hidden'}>${F.filter(f=>X.includes(f[0])).map(fd(r)).join('')}</div>${X.some(k=>nf(r.f[k]))?'':'<button type="button" class="b2 mini" data-ex="1" style="margin-top:10px">+ Cuarentena / Facturas p. / Altas p.</button>'}<div class="sum">Total <b class="t"></b> · Dif <b class="df"></b></div></div>`}).join('')}<div style="padding:6px 10px"><button class="b2 mini" data-add="${n}">+ Agregar lote de este código</button></div></section>`).join('');
+$('#list').innerHTML=G.map((g,n)=>`<section class="card" data-q="${E(nz(g.c+' '+g.d))}"><header class="hd"><span id="gd${n}" class="pill"></span><div class="cd">${E(g.c)}</div><div class="ds">${E(g.d)}</div></header>${g.ix.map(i=>{const r=S.rows[i];return`<div class="row" data-i="${i}"><div class="lot"><small>LOTE</small>${E(r.l)}${r.x?' <span class="tag">AGREGADO</span>':''}</div><div class="meta">Vence <b>${fv(r.v)||'—'}</b> · ${E(r.s)} · ${r.x?`<u data-rm="${i}" style="cursor:pointer;color:var(--bad)">Quitar</u>`:`<b class="erp">ERP ${r.q}</b>`}</div><div class="ins">${F.filter(f=>!X.includes(f[0])).map(fd(r)).join('')}</div><div class="ins ex"${X.some(k=>nf(r.f[k]))?'':' hidden'}>${F.filter(f=>X.includes(f[0])).map(fd(r)).join('')}</div>${X.some(k=>nf(r.f[k]))?'':'<button type="button" class="b2 mini" data-ex="1" style="margin-top:10px">+ Cuarentena / Facturas p. / Altas p.</button>'}<div class="sum"><span>Total contado: <b class="t"></b></span><span>Dif: <b class="df"></b></span></div></div>`}).join('')}<div style="padding:6px 10px"><button class="b2 mini" data-add="${n}">+ Agregar lote de este código</button></div></section>`).join('');
 S.rows.forEach((_,i)=>upd(i));G.forEach((_,n)=>gdif(n));stat()}
-function upd(i){const r=S.rows[i],el=$(`[data-i="${i}"]`),t=tot(r),h=F.some(([k])=>nf(r.f[k]));el.querySelector('.t').textContent=h?t:'—';const d=el.querySelector('.df');d.textContent=h?t-r.q:'—';d.className='df '+(h?(t-r.q?'bad':'ok'):'')}
-function gdif(n){const ix=G[n].ix,h=ix.some(i=>F.some(([k])=>nf(S.rows[i].f[k]))),d=ix.reduce((a,i)=>a+tot(S.rows[i])-S.rows[i].q,0),e=$('#gd'+n);e.textContent=h?(d?'Dif '+d:'✓ OK'):'pendiente';e.className=h?(d?'bad':'ok'):''}
-function stat(){$('#st').textContent=G.filter(g=>g.ix.some(i=>F.some(([k])=>nf(S.rows[i].f[k])))).length+' de '+G.length+' SKU contados'}
-function sv(){clearTimeout(tm);tm=setTimeout(()=>{try{localStorage.setItem('cc:'+S.m+':'+S.iso,JSON.stringify({r:S.rows.filter(has).map(r=>[key(r),r.f,r.lf]),x:S.rows.filter(r=>r.x),g:S.g,id:S.id}))}catch(x){}},400)}
+function upd(i){const r=S.rows[i],el=$(`[data-i="${i}"]`),t=tot(r),h=F.some(([k])=>nf(r.f[k]));el.classList.toggle('done',h);el.querySelector('.t').textContent=h?t:'—';const d=el.querySelector('.df');d.textContent=h?t-r.q:'—';d.className='df '+(h?(t-r.q?'bad':'ok'):'')}
+function gdif(n){const ix=G[n].ix,hs=ix.map(i=>F.some(([k])=>nf(S.rows[i].f[k]))),h=hs.some(Boolean),f=hs.filter(x=>!x).length,d=ix.reduce((a,i)=>a+tot(S.rows[i])-S.rows[i].q,0),e=$('#gd'+n);
+e.textContent=!h?'pendiente':f?'faltan '+f:(d?'Dif '+d:'✓ OK');e.className='pill '+(h&&!f?(d?'bad':'ok'):'');const c=e.closest('.card');c.dataset.pd=f?'1':'';c.dataset.st=h&&!f&&d?'d':''}
+function stat(){$('#st').textContent=G.filter(g=>g.ix.every(i=>F.some(([k])=>nf(S.rows[i].f[k])))).length+' de '+G.length+' SKU contados';const cs=[...document.querySelectorAll('.card')],c=f=>cs.filter(x=>f==='p'?x.dataset.pd==='1':x.dataset.st==='d').length;document.querySelectorAll('.chips button').forEach(b=>{const f=b.dataset.f;b.textContent=(f==='p'?'Pendientes':f==='d'?'Con diferencia':'Todos')+' ('+(f?c(f):cs.length)+')'})}
+function svNow(){if(!S)return;try{localStorage.setItem('cc:'+S.m+':'+S.iso,JSON.stringify({r:S.rows.filter(has).map(r=>[key(r),r.f,r.lf]),x:S.rows.filter(r=>r.x),g:S.g,id:S.id,m:S.m,n:S.n,iso:S.iso,fecha:S.fecha,rows:S.rows,t:Date.now()}));$('#sg').textContent='✓ Guardado '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}catch(x){$('#sg').textContent='⚠ No se pudo guardar'}}
+function sv(){clearTimeout(tm);tm=setTimeout(svNow,400)}
 $('#list').oninput=e=>{const t=e.target,k=t.dataset.k;if(!k)return;const i=+t.closest('.row').dataset.i,r=S.rows[i];if(k==='lf')r.lf=t.value.trim();else r.f[k]=t.value;upd(i);gdif(GI[i]);stat();sv()};
 function insRow(r){let p=-1;S.rows.forEach((x,i)=>{if(x.c===r.c)p=i});if(p>=0){S.rows.splice(p+1,0,r);return}p=S.rows.findIndex(x=>x.c>r.c);if(p<0)S.rows.push(r);else S.rows.splice(p,0,r)}
-function openAdd(g){const f=g?S.rows[g.ix[0]]:{o:(S.rows[0]||{}).o||'IML',s:'',k:null};$('#sl').innerHTML=[...new Set(RAW.map(r=>r.s).filter(Boolean))].map(s=>`<option value="${E(s)}">`).join('');
+function openAdd(g){const f=g?S.rows[g.ix[0]]:{o:(S.rows[0]||{}).o||'IML',s:'',k:null};$('#sl').innerHTML=[...new Set((RAW.length?RAW:S.rows).map(r=>r.s).filter(Boolean))].map(s=>`<option value="${E(s)}">`).join('');
 $('#pt').textContent=g?'Agregar lote a '+g.c:'Agregar código que no está en la existencia';$('#ac').value=g?g.c:S.m;$('#ac').readOnly=!!g;$('#ad').value=g?g.d:'';$('#ad').readOnly=!!g;$('#ao').value=f.o;$('#as').value=f.s;$('#al').value='';$('#av').value='';$('#ak').value=f.k??'';$('#am').textContent='';$('#pn').hidden=false;$('#pn').scrollIntoView({block:'center'})}
 $('#nw').onclick=()=>openAdd(null);$('#acx').onclick=()=>$('#pn').hidden=true;
 $('#aok').onclick=()=>{const c=$('#ac').value.trim(),l=$('#al').value.trim(),m=t=>$('#am').textContent=t;if(!c.startsWith(S.m))return m('El código debe empezar con '+S.m+'.');if(!l)return m('Escribe el lote.');
@@ -80,7 +82,7 @@ const ex=S.rows.filter(r=>r.c===c),d=$('#ad').value.trim()||(ex[0]||{}).d||'';if
 const k=parseFloat($('#ak').value.replace(',','.')),r={c,d,o:$('#ao').value.trim(),s:$('#as').value.trim(),l,v:$('#av').value,q:0,k:isNaN(k)?((ex[0]||{}).k??null):k,f:{},lf:'',x:1};
 if(S.rows.some(x=>key(x)===key(r)))return m('Ese código, subinventario y lote ya está en la lista.');insRow(r);$('#pn').hidden=true;render();sv()};
 $('#list').onclick=e=>{const t=e.target;if(t.dataset.ex!=null){t.closest('.row').querySelector('.ex').hidden=false;t.remove();return}if(t.dataset.pl!=null){const o=t.closest('.ip').querySelector('input');if(o.value&&!o.value.endsWith('+'))o.value+='+';o.focus();return}if(t.dataset.rm!=null){S.rows.splice(+t.dataset.rm,1);render();sv()}else if(t.dataset.add!=null)openAdd(G[+t.dataset.add])};
-$('#q').oninput=e=>{const v=nz(e.target.value);document.querySelectorAll('.card').forEach(c=>c.hidden=!c.dataset.q.includes(v))};
+let FL='';const flt=()=>{const v=nz($('#q').value);document.querySelectorAll('.card').forEach(c=>c.hidden=!c.dataset.q.includes(v)||!(!FL||(FL==='p'?c.dataset.pd==='1':c.dataset.st==='d')))};$('#q').oninput=flt;document.querySelectorAll('.chips button').forEach(b=>b.onclick=()=>{FL=b.dataset.f;document.querySelectorAll('.chips button').forEach(x=>x.classList.toggle('on',x===b));flt()});
 async function save(name,data,t){let d=null;try{d=window.claude&&await claude.use('downloads')}catch(x){}
 if(d){try{await d.save({filename:name,data});return}catch(x){if(x&&x.code==='declined')return}}
 const a=document.createElement('a');a.href=URL.createObjectURL(data instanceof Blob?data:new Blob([data],{type:t}));a.download=name;a.click()}
@@ -112,7 +114,7 @@ g.ix.forEach((i,k)=>{const x=S.rows[i],t=tot(x),row=a+k,cs=x.k||0;
 [n,x.c,x.c.slice(0,3),x.d,x.o,x.s,x.x?null:x.l,x.x?null:dt(x.v),x.x?null:x.q,x.l,dt(x.v)].forEach((v,j)=>ws.getCell(row,j+1).value=v);
 F.forEach(([q],j)=>{const s=nf(x.f[q]);if(!s)return;ws.getCell(row,12+j).value=/^[\d.]+$/.test(s)?+s:(/^[\d.+]+$/.test(s)?{formula:s,result:ev(s)}:null)});
 const set=(c,f,res)=>ws.getCell(row,c).value={formula:f,result:res};
-set(18,`SUM(L${row}:Q${row})`,t);set(19,`SUM(R${row}-I${row})`,t-x.q);if(x.k!=null)ws.getCell(row,20).value=x.k;
+set(18,`SUM(L${row}:O${row})-P${row}+Q${row}`,t);set(19,`SUM(R${row}-I${row})`,t-x.q);if(x.k!=null)ws.getCell(row,20).value=x.k;
 set(21,`T${row}*I${row}`,cs*x.q);set(22,`T${row}*R${row}`,cs*t);
 if(k==0)set(24,a==z?`SUM(S${a})`:`SUM(S${a}:S${z})`,gd);set(27,`IF(X${row}>0,1,IF(X${row}<0,1,0))`,k==0&&gd?1:0);
 for(let c=1;c<=NC;c++)st(ws.getCell(row,c),{h:[1,2,3,5,6,7,8,10,11].includes(c)?'center':null,n:c==8||c==11?'m/d/yyyy':c==20?'0.00':(c==21||c==22)?ACC:null,f:c==23?'70AD47':(c==19||(c==24&&k==0))?'FFFF00':null});
@@ -142,10 +144,19 @@ for(let r=10;r<=11;r++){ws.getRow(r).height=18;for(let c=1;c<=8;c++){const x=ws.
 ['A10:A11','B10:B11','C10:C11','D10:D11','E10:E11','F10:G10','H10:H11'].forEach(m=>ws.mergeCells(m));
 [['A10','N°'],['B10','CODIGO'],['C10','DESCRIPCION'],['D10','LOTE'],['E10','VENCE'],['F10','CANTIDADES FISICAS'],['H10','TOTAL FISICO'],['F11','PASILLO DE PREPARACION'],['G11','ALMACENAMIENTO']].forEach(([a,v])=>ws.getCell(a).value=v);
 let r=12,n=0,tp=0,ta=0;const bl=h=>{ws.getRow(r).height=h;for(let c=1;c<=8;c++)ws.getCell(r,c).border=bd;r++};bl(14);
-G.forEach(g=>{n++;g.ix.forEach(i=>{const x=S.rows[i],ct=F.some(([k])=>nf(x.f[k])),pa=ev(x.f.p),al=['a','b','c','f','h'].reduce((s,k)=>s+ev(x.f[k]),0);
+G.forEach(g=>{n++;g.ix.forEach(i=>{const x=S.rows[i],ct=F.some(([k])=>nf(x.f[k])),pa=ev(x.f.p),al=['a','b','c','h'].reduce((s,k)=>s+ev(x.f[k]),0)-ev(x.f.f);
 [n,x.c,x.d,x.l,dd(x.v),ct?pa:null,ct?al:null,ct?{formula:`SUM(F${r}:G${r})`,result:pa+al}:null].forEach((v,j)=>{const c=ws.getCell(r,j+1);c.value=v;c.border=bd;c.font=ft({bold:j==0});c.alignment={horizontal:j<3&&j!=1?'left':(j==1?'left':'center'),vertical:'bottom'};if(j==4)c.numFmt='dd/mm/yyyy'});
 ws.getRow(r).height=28;if(ct){tp+=pa;ta+=al}r++});bl(28)});
 ws.getCell(r,5).value='TOTAL';[[6,tp],[7,ta],[8,tp+ta]].forEach(([c,v])=>{ws.getCell(r,c).value={formula:`SUM(${'FGH'[c-6]}12:${'FGH'[c-6]}${r-1})`,result:v}});
 for(let c=1;c<=8;c++){const x=ws.getCell(r,c);x.border=bd;x.font=ft({bold:true});x.alignment={horizontal:'center',vertical:'middle'};if(c>=5)x.fill=fl('EEEBE4')}ws.getRow(r).height=20;
 const buf=await W.xlsx.writeBuffer();await save(`COMPROBANTE_${S.m}_${S.fecha.replace(/\./g,'')}.xlsx`,buf,'application/octet-stream');msg('Comprobante generado.','msg2')}
+$('#sg').onclick=svNow;
+function lsList(){const out=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!k||!k.startsWith('cc:'))continue;try{const j=JSON.parse(localStorage.getItem(k));if(j&&j.rows)out.push({k,j})}catch(x){}}
+out.sort((a,b)=>(b.j.t||0)-(a.j.t||0));
+$('#sv').innerHTML=out.length?'<h3 style="margin:14px 0 4px">Conteos guardados</h3>'+out.map(({k,j})=>{const by={};j.rows.forEach(r=>(by[r.c]=by[r.c]||[]).push(F.some(([q])=>nf(r.f[q]))));const cs=Object.values(by).filter(a=>a.every(Boolean)).length,tt=Object.keys(by).length,h=new Date(j.t||0).toLocaleString([],{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+return`<div class="card" style="padding:10px"><b>${E(j.m)} ${E(j.n||'')}</b> · ${E(j.fecha)}<div class="meta">${cs} de ${tt} SKU contados · guardado ${h}</div><button data-res="${E(k)}">Continuar</button><button class="b2" data-del="${E(k)}">Borrar</button></div>`}).join(''):''}
+$('#sv').onclick=e=>{const t=e.target,k=t.dataset.res||t.dataset.del;if(!k)return;
+if(t.dataset.res){try{const j=JSON.parse(localStorage.getItem(k));S={m:j.m,n:j.n,iso:j.iso,fecha:j.fecha,rows:j.rows,g:j.g||[],id:j.id||Date.now().toString(36)};$('#ttl').textContent=(S.m+' '+S.n).trim();$('#s1').hidden=true;$('#s2').hidden=false;render()}catch(x){msg('No pude abrir ese conteo.')}}
+else if(t.dataset.c==='1'){localStorage.removeItem(k);lsList()}else{t.dataset.c='1';t.textContent='Toca otra vez para borrar'}};
+document.addEventListener('visibilitychange',()=>{if(S&&document.hidden)svNow()});lsList();
 </script></body></html>
